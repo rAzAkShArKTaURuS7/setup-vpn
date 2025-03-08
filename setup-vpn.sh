@@ -9,7 +9,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Kemas kini & pasang pakej asas
-echo "?? Mengemas kini sistem..."
+echo "🔄 Mengemas kini sistem..."
 apt update -y && apt upgrade -y
 apt install -y curl wget nano unzip nginx git socat cron bash-completion certbot python3-certbot-nginx
 
@@ -18,7 +18,7 @@ echo "⚡ Memasang XRay Core..."
 bash <(curl -Ls https://raw.githubusercontent.com/XTLS/Xray-install/main/install-release.sh)
 
 # Pasang Nginx untuk reverse proxy
-echo "?? Mengkonfigurasi Nginx..."
+echo "🌐 Mengkonfigurasi Nginx..."
 rm -rf /etc/nginx/sites-enabled/default
 cat > /etc/nginx/sites-available/unblockvpn << END
 server {
@@ -38,7 +38,7 @@ ln -s /etc/nginx/sites-available/unblockvpn /etc/nginx/sites-enabled/
 systemctl restart nginx
 
 # Pasang Let's Encrypt SSL
-echo "?? Memasang SSL untuk domain unblockvpn.store..."
+echo "🔐 Memasang SSL untuk domain unblockvpn.store..."
 certbot certonly --nginx --non-interactive --agree-tos -m razaksharktaurus7@gmail.com -d unblockvpn.store
 
 # Konfigurasi XRay (VLESS WS + TLS)
@@ -86,7 +86,7 @@ systemctl restart xray
 
 # Paparkan maklumat VPN
 echo "✅ Pemasangan selesai!"
-echo "?? Bug Host: youtu.be"
-echo "?? Domain: unblockvpn.store"
-echo "?? UUID: $UUID"
+echo "🔹 Bug Host: youtu.be"
+echo "🔹 Domain: unblockvpn.store"
+echo "🔹 UUID: $UUID"
 echo "Gunakan bug host youtu.be dalam klien VPN anda."
